@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SaintsPlayersAPI.Data;
 using SaintsPlayersAPI.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SaintsPlayersAPI.Controllers
 {
@@ -46,8 +47,28 @@ namespace SaintsPlayersAPI.Controllers
             {
                 return NotFound();
             }
-
             return saintsPlayer;
         }
+
+        [HttpGet("Country/{country}")]
+        public async Task<ActionResult<IEnumerable<SaintsPlayer>>> SearchCountry(string country)
+        {
+            if (!string.IsNullOrEmpty(country))
+            {
+                _context.SaintsPlayer.Where (e => e.Country.Contains(country));
+            }
+            return await _context.SaintsPlayer.ToListAsync();
+        }
+
+        [HttpGet("Position/{position}")]
+        public async Task<ActionResult<IEnumerable<SaintsPlayer>>> SearchPosition(string position)
+        {
+            if (!string.IsNullOrEmpty(position))
+            {
+                _context.SaintsPlayer.Where(e => e.Position.Contains(position));
+            }
+            return await _context.SaintsPlayer.ToListAsync();
+        }
+
     }
 }
