@@ -30,6 +30,8 @@ namespace SaintsPlayersAPI.Controllers
           {
               return NotFound();
           }
+            _context.SaintsPlayer.OrderByDescending(e
+                  => e.Appearances);
             return await _context.SaintsPlayer.ToListAsync();
         }
 
