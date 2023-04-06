@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SaintsPlayersAPI.Data;
 
@@ -9,10 +10,12 @@ using SaintsPlayersAPI.Data;
 
 namespace SaintsPlayersAPI.Migrations
 {
-    [DbContext(typeof(SaintsPlayersAPIContext))]
-    partial class SaintsPlayersAPIContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(SaintsPlayerDataContext))]
+    [Migration("20230405184741_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace SaintsPlayersAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SaintsPlayer");
+                    b.ToTable("SaintsPlayers");
                 });
 #pragma warning restore 612, 618
         }

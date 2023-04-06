@@ -11,7 +11,7 @@ namespace SaintsPlayersAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "SaintsPlayer",
+                name: "SaintsPlayers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -24,7 +24,7 @@ namespace SaintsPlayersAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SaintsPlayer", x => x.Id);
+                    table.PrimaryKey("PK_SaintsPlayers", x => x.Id);
                 });
         }
 
@@ -32,7 +32,7 @@ namespace SaintsPlayersAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "SaintsPlayer");
+                name: "SaintsPlayers");
         }
     }
 }
